@@ -1,4 +1,8 @@
-# Apna Mandi API Contract This document outlines the API endpoints for the Apna Mandi B2B platform, covering both Vendor and Supplier interfaces. --- ## Authentication (Common: Vendor & Supplier) ### `POST /api/auth/register` Registers a vendor or supplier. **Request:**
+## covering both Vendor and Supplier interfaces. --- ## Authentication (Common: Vendor & Supplier)
+### `POST /api/auth/register`
+Registers a vendor or supplier.
+
+**Request:**
 ```json
 
 {  
