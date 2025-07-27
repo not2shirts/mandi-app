@@ -1,0 +1,45 @@
+"You are an expert DevOps engineer and senior Java developer specializing in cloud-native applications. I need to create a production-ready deployment configuration for my Java Spring Boot application that uses a MongoDB database.
+
+Please generate the following assets and provide a clear explanation for each part. The entire setup should prioritize security, efficiency, and scalability.
+
+Here are the requirements:
+
+1. A Multi-Stage Dockerfile:
+
+Build Stage: Use a standard JDK image (e.g., eclipse-temurin:17-jdk-jammy) with Maven or Gradle to build the application .jar file.
+
+Final Stage: Use a minimal, secure JRE image (e.g., eclipse-temurin:17-jre-jammy).
+
+Security: Create a non-root user and group to run the application. Ensure file permissions are correctly set for this user.
+
+Efficiency: The final image should be as small as possible.
+
+Configuration: Include ENTRYPOINT to run the application.
+
+2. A Production-Optimized application.properties File:
+
+Externalization: This file must NOT contain any hardcoded secrets or environment-specific values. All configurations like database URIs, server ports, and secrets must be loaded from environment variables using the ${VARIABLE_NAME} syntax.
+
+Database: Configure the MongoDB connection, including the URI and connection pool settings suitable for a production load.
+
+Graceful Shutdown: Enable graceful shutdown to prevent abrupt disconnections and data loss during deployments.
+
+Logging: Configure logging to output in JSON format for easy parsing by log aggregation tools like Logstash or Fluentd. Set the root log level via an environment variable.
+
+Actuator: Expose only the /health/readiness and /health/liveness actuator endpoints. Do not expose all endpoints.
+
+3. A List of Required Environment Variables:
+
+Provide a sample .env file template that lists all the environment variables the application will need to run.
+
+Include placeholders for values, for example: SPRING_DATA_MONGODB_URI="mongodb+srv://user:password@host/db" and JWT_SECRET="replace_with_a_strong_random_string".
+
+Explain the purpose of each variable.
+
+4. A Comprehensive Explanation:
+
+For each file (Dockerfile, application.properties), explain the key decisions and why they are considered best practices for a production environment.
+
+Explain how the Dockerfile, the Spring configuration, and the environment variables all work together to create a secure and flexible deployment.
+
+The final output should be a complete guide that I can use to confidently containerize and configure my application for production deployment on any modern cloud platfo

@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: rdbac-app
+    env: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: SPRING_DATA_MONGODB_URI
+        sync: mongodb+srv://anshbadam:Java@spring123@cluster0.y5zv9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      - key: SPRING_DATA_MONGODB_DATABASE
+        value: Mandi-App
+      - key: JWT_SECRET
+        generateValue: yl0rw5jDdTKgaUYB86cw/9xdzefS5to95U3tDnolFmg=
+      - key: LOG_LEVEL
+        value: INFO
+      - key: SERVER_PORT
+        value: 8080
+    healthCheckPath: /actuator/health
+    disk:
+      name: rdbac-disk
+      mountPath: /app/data
+      sizeGB: 1
