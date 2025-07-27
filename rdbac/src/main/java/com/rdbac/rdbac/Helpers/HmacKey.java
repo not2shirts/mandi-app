@@ -13,12 +13,13 @@ import lombok.Builder;
 public class HmacKey {
 
    
-    private String jwt_key =  System.getenv("JWT_KEY");
+   
+    private String jwt_key =  "";
     public SecretKey get_SecretKey() {
         
                 
-                System.out.println("The is Key. is. = " + jwt_key);
-                byte[] decoded = Base64.getDecoder().decode(jwt_key);
+                System.out.println("The is Key. is. = " + System.getenv("JWT_KEY"));
+                byte[] decoded = Base64.getDecoder().decode(System.getenv("JWT_KEY"));
                 return new SecretKeySpec(decoded, "HmacSHA256");
 
                 
