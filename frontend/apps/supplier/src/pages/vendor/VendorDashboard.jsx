@@ -1,19 +1,20 @@
 import { useState } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
-import { 
-  ShoppingCart, 
-  Package, 
-  Users, 
-  ShoppingBag, 
-  History, 
-  User, 
-  LogOut, 
-  Menu, 
+import {
+  ShoppingCart,
+  Package,
+  Users,
+  ShoppingBag,
+  History,
+  User,
+  LogOut,
+  Menu,
   X,
   TrendingUp,
   DollarSign,
   Clock,
-  Bell
+  Bell,
+  MenuIcon
 } from 'lucide-react';
 import { Button } from '../../components/ui/button';
 
@@ -23,39 +24,45 @@ export function VendorDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const menuItems = [
-    { 
-      name: 'Dashboard', 
-      path: '/vendor/dashboard', 
+     {
+      name: 'Recommendations',
+      path: '/vendor/recommendations',
+      icon: MenuIcon,
+      description: 'Recommended Suppliers for you'
+    },
+    {
+      name: 'Dashboard',
+      path: '/vendor/dashboard',
       icon: ShoppingCart,
       description: 'Overview and analytics'
     },
-    { 
-      name: 'Product Catalog', 
-      path: '/vendor/catalog', 
+    {
+      name: 'Product Catalog',
+      path: '/vendor/catalog',
       icon: Package,
       description: 'Browse supplier products'
     },
-    { 
-      name: 'Group Orders', 
-      path: '/vendor/group-orders', 
+    {
+      name: 'Group Orders',
+      path: '/vendor/group-orders',
       icon: Users,
       description: 'Join group buying'
     },
-    { 
-      name: 'Individual Orders', 
-      path: '/vendor/individual-orders', 
+    {
+      name: 'Individual Orders',
+      path: '/vendor/individual-orders',
       icon: ShoppingBag,
       description: 'Place direct orders'
     },
-    { 
-      name: 'Order History', 
-      path: '/vendor/order-history', 
+    {
+      name: 'Order History',
+      path: '/vendor/order-history',
       icon: History,
       description: 'Track your orders'
     },
-    { 
-      name: 'Profile', 
-      path: '/vendor/profile', 
+    {
+      name: 'Profile',
+      path: '/vendor/profile',
       icon: User,
       description: 'Manage account'
     }
@@ -102,7 +109,7 @@ export function VendorDashboard() {
             </div>
             <span className="text-xl font-bold text-gray-900">Apna Mandi</span>
           </div>
-          <button 
+          <button
             onClick={() => setSidebarOpen(false)}
             className="lg:hidden text-gray-500 hover:text-gray-700"
           >
@@ -128,14 +135,14 @@ export function VendorDashboard() {
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
-            
+
             return (
               <Link
                 key={item.path}
                 to={item.path}
                 className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                  isActive 
-                    ? 'bg-green-50 text-green-700 border-l-4 border-green-600' 
+                  isActive
+                    ? 'bg-green-50 text-green-700 border-l-4 border-green-600'
                     : 'text-gray-700 hover:bg-gray-50'
                 }`}
                 onClick={() => setSidebarOpen(false)}
@@ -177,7 +184,7 @@ export function VendorDashboard() {
               </button>
               <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
             </div>
-            
+
             <div className="flex items-center gap-4">
               <button className="relative p-2 text-gray-500 hover:text-gray-700">
                 <Bell className="w-6 h-6" />
@@ -255,14 +262,14 @@ export function VendorDashboard() {
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-lg font-semibold text-gray-900">Recent Orders</h3>
-                <Link 
+                <Link
                   to="/vendor/order-history"
                   className="text-sm text-green-600 hover:text-green-800 font-medium"
                 >
                   View All
                 </Link>
               </div>
-              
+
               <div className="space-y-4">
                 {recentOrders.map((order) => (
                   <div key={order.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
@@ -290,14 +297,14 @@ export function VendorDashboard() {
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-lg font-semibold text-gray-900">Active Group Orders</h3>
-                <Link 
+                <Link
                   to="/vendor/group-orders"
                   className="text-sm text-green-600 hover:text-green-800 font-medium"
                 >
                   View All
                 </Link>
               </div>
-              
+
               <div className="space-y-4">
                 {groupOrders.map((order) => (
                   <div key={order.id} className="p-4 border border-gray-200 rounded-lg">
@@ -327,7 +334,7 @@ export function VendorDashboard() {
           <div className="mt-8">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <Link 
+              <Link
                 to="/vendor/catalog"
                 className="bg-white border border-gray-200 rounded-xl p-6 text-center hover:shadow-md transition-shadow"
               >
@@ -335,8 +342,8 @@ export function VendorDashboard() {
                 <p className="font-medium text-gray-900">Browse Catalog</p>
                 <p className="text-sm text-gray-600">Find products to order</p>
               </Link>
-              
-              <Link 
+
+              <Link
                 to="/vendor/group-orders"
                 className="bg-white border border-gray-200 rounded-xl p-6 text-center hover:shadow-md transition-shadow"
               >
@@ -344,8 +351,8 @@ export function VendorDashboard() {
                 <p className="font-medium text-gray-900">Join Group Order</p>
                 <p className="text-sm text-gray-600">Save with bulk buying</p>
               </Link>
-              
-              <Link 
+
+              <Link
                 to="/vendor/individual-orders"
                 className="bg-white border border-gray-200 rounded-xl p-6 text-center hover:shadow-md transition-shadow"
               >
@@ -353,8 +360,8 @@ export function VendorDashboard() {
                 <p className="font-medium text-gray-900">Place Order</p>
                 <p className="text-sm text-gray-600">Order directly</p>
               </Link>
-              
-              <Link 
+
+              <Link
                 to="/vendor/profile"
                 className="bg-white border border-gray-200 rounded-xl p-6 text-center hover:shadow-md transition-shadow"
               >
