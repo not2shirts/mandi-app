@@ -1,6 +1,9 @@
 # Multi-Stage Dockerfile
 
 # Build Stage
+cd rdbac/
+
+
 FROM eclipse-temurin:17-jdk-jammy as build
 WORKDIR /app
 COPY pom.xml /app
