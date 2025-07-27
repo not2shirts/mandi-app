@@ -12,19 +12,16 @@ import lombok.Builder;
 @Builder
 public class HmacKey {
 
-    @Value("${JWT_KEY}")
-    private String jwt_key;
+   
+    private String jwt_key =  System.getenv("JWT_KEY");
     public SecretKey get_SecretKey() {
-        try (FileReader fileReader = new FileReader("/Users/ansh/Desktop/to_do_list/Spring_boot_projects/Clone/rdbac/src/main/resources/keys/JWT.pem");
-             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-                String key = bufferedReader.readLine();
-                System.out.println("The is Key. is. = " + key);
-                byte[] decoded = Base64.getDecoder().decode(key);
+        
+                
+                System.out.println("The is Key. is. = " + jwt_key);
+                byte[] decoded = Base64.getDecoder().decode(jwt_key);
                 return new SecretKeySpec(decoded, "HmacSHA256");
 
                 
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to read secret key", e);
-        }
+       
     }
 }
