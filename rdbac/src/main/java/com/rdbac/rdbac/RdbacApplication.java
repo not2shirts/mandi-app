@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class RdbacApplication {
 
 	public static void main(String[] args) {
+		 System.out.println("MONGO_URI: " + System.getenv("SPRING_DATA_MONGODB_URI"));
 		SpringApplication.run(RdbacApplication.class, args);
 	}
 

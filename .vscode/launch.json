@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-RdbacApplication<rdbac>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.rdbac.rdbac.RdbacApplication",
+            "projectName": "rdbac",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
