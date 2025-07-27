@@ -10,7 +10,8 @@ import javax.crypto.SecretKey;
 import org.springframework.security.config.annotation.rsocket.RSocketSecurity.JwtSpec;
 import org.springframework.stereotype.Service;
 
-import com.rdbac.rdbac.Helpers.HmacKeyHelper;
+import com.rdbac.rdbac.Helpers.HmacKey;
+
 import com.rdbac.rdbac.Pojos.App_User;
 
 import io.jsonwebtoken.Claims;
@@ -45,7 +46,7 @@ do you nned about jit
 
      private SecretKey secretKey;
      public JWTServiceImplementation() {
-        secretKey = HmacKeyHelper.builder().build().get_SecretKey();
+        secretKey = HmacKey.builder().build().get_SecretKey();
         //System.out.println(secretKey);
 
      }
